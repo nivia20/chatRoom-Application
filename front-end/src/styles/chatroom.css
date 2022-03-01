@@ -1,0 +1,127 @@
+.chatroomPage {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  margin: -8px;
+  background: linear-gradient(to bottom left, #79C7C5 40%, #F9FBFF 100%);
+}
+
+.chatroomSection {
+  width: 60vw;
+  height: 80vh;
+  margin: auto;
+  border: 1px solid #eee;
+  position: relative;
+  background: #cee0f9;
+}
+
+.chatroomContent {
+  position: absolute;
+  top: 4.5rem;
+  left: 0;
+  right: 0;
+  bottom: 3.5rem;
+  padding: 0.5rem;
+  overflow: auto;
+}
+
+.chatroomActions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 72px;
+  grid-gap: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.chatroomActions button {
+  height: 100%;
+}
+
+.message {
+  margin-bottom: 0.25rem;
+}
+
+.otherMessage {
+  /* color: #0099cc; */
+  color: #333; 
+  font-weight: bold;
+  position: absolute;
+
+}
+
+.ownMessage {
+  color: #333;
+  font-weight: bold;
+  position: absolute;
+}
+
+.talk-bubble {
+  display: inline-block;
+  position: relative;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-left: 180px;
+  background-color: #77777770;
+}
+
+
+/* Right triangle, left side slightly down */
+.tri-right.border.left-in:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -40px;
+  right: auto;
+  top: 0px;
+  bottom: auto;
+  border: 20px solid;
+  border-color: #666 #666 transparent transparent;
+}
+.tri-right.left-in:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -24px;
+  right: auto;
+  top: 0px;
+  bottom: auto;
+  border: 12px solid;
+  border-color: #77777770 #77777770 transparent transparent;
+}
+
+.talktext{
+  padding: 1em;
+  text-align: left;
+  line-height: 1.5em;
+  color: white !important;
+
+}
+.talktext p{
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  color: white !important;
+
+}
+
+input[type="text"] {
+  height: fit-content;
+  font-size: 15px !important;
+  position: relative;
+  display: inline-block;
+  height: -moz-fit-content;
+  padding: 0.5rem 1.1rem;
+}
+
+input[type="text"]:focus{
+  outline : none;
+}
