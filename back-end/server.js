@@ -1,4 +1,3 @@
-  
 require("dotenv").config();
 
 const mongoose = require("mongoose");
@@ -30,9 +29,9 @@ const io = require("socket.io")(server, {
   allowEIO3: true,
   cors: {
     origin: true,
-    methods: ['GET', 'POST'],
-    credentials: true
-  }
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
 });
 
 const jwt = require("jwt-then");
@@ -68,19 +67,19 @@ io.on("connection", (socket) => {
 
   socket.on("chatroomMessage", async ({ chatroomId, message }) => {
     if (message.trim().length > 0) {
-      console.log("kess",message)
+      console.log("kess", message);
       const user = await User.findOne({ _id: socket.userId });
       const newMessage = new Message({
         chatroom: chatroomId,
         user: socket.userId,
-        message:message,
+        message: message,
       });
       io.to(chatroomId).emit("newMessage", {
         message,
-       name: user.name,
+        name: user.name,
         userId: socket.userId,
       });
       await newMessage.save();
     }
   });
-})
+});

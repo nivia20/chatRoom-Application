@@ -5,7 +5,7 @@
   height: 100vh;
   width: 100vw;
   margin: -8px;
-  background: linear-gradient(to bottom left, #79C7C5 40%, #F9FBFF 100%);
+  background: linear-gradient(to bottom left, #79c7c5 40%, #f9fbff 100%);
 }
 
 .chatroomSection {
@@ -15,6 +15,12 @@
   border: 1px solid #eee;
   position: relative;
   background: #cee0f9;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 .chatroomContent {
@@ -49,10 +55,9 @@
 
 .otherMessage {
   /* color: #0099cc; */
-  color: #333; 
+  color: #333;
   font-weight: bold;
   position: absolute;
-
 }
 
 .ownMessage {
@@ -71,10 +76,9 @@
   background-color: #77777770;
 }
 
-
 /* Right triangle, left side slightly down */
 .tri-right.border.left-in:before {
-  content: ' ';
+  content: " ";
   position: absolute;
   width: 0;
   height: 0;
@@ -85,8 +89,8 @@
   border: 20px solid;
   border-color: #666 #666 transparent transparent;
 }
-.tri-right.left-in:after{
-  content: ' ';
+.tri-right.left-in:after {
+  content: " ";
   position: absolute;
   width: 0;
   height: 0;
@@ -98,19 +102,17 @@
   border-color: #77777770 #77777770 transparent transparent;
 }
 
-.talktext{
+.talktext {
   padding: 1em;
   text-align: left;
   line-height: 1.5em;
   color: white !important;
-
 }
-.talktext p{
+.talktext p {
   /* remove webkit p margins */
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em;
   color: white !important;
-
 }
 
 input[type="text"] {
@@ -122,6 +124,6 @@ input[type="text"] {
   padding: 0.5rem 1.1rem;
 }
 
-input[type="text"]:focus{
-  outline : none;
+input[type="text"]:focus {
+  outline: none;
 }

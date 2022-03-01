@@ -26,7 +26,6 @@ const RegisterPage = (props) => {
         history.push("/login");
       })
       .catch((err) => {
-        // console.log(err);
         if (
           err &&
           err.response &&
@@ -39,43 +38,45 @@ const RegisterPage = (props) => {
 
   return (
     <div className="background">
-    <div className="card">
-      <div className="cardHeader">Registration</div>
-      <div className="cardBody">
-        <div className="inputGroup">
-          <label htmlFor="name">Name</label>
+      <div className="card">
+        <div className="cardHeader">Registration</div>
+        <div className="cardBody">
+          <div className="inputGroup">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="John Doe"
+              ref={nameRef}
+            />
+          </div>
+          <label htmlFor="email">Email</label>
           <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="John Doe"
-            ref={nameRef}
+            type="email"
+            name="email"
+            id="email"
+            placeholder="abc@example.com"
+            ref={emailRef}
           />
         </div>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="abc@example.com"
-          ref={emailRef}
-        />
-      </div>
-      <div className="inputGroup">
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Your Password"
-          ref={passwordRef}
-        />
-      </div>
-      <button onClick={registerUser}>Register</button>
-      <Link to={"/login"}>
-          <span className="linkPage"><i>Already Registered! Login now</i></span>
+        <div className="inputGroup">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Your Password"
+            ref={passwordRef}
+          />
+        </div>
+        <button onClick={registerUser}>Register</button>
+        <Link to={"/login"}>
+          <span className="linkPage">
+            <i>Already Registered! Login now</i>
+          </span>
         </Link>
-    </div>
+      </div>
     </div>
   );
 };

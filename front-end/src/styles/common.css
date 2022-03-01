@@ -116,23 +116,23 @@ a {
   text-decoration: none;
   color: #333;
 }
-.align{
+.align {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  background: linear-gradient(to bottom left, #79C7C5 40%, #F9FBFF 100%);
+  background: linear-gradient(to bottom left, #79c7c5 40%, #f9fbff 100%);
   height: 100vh;
   width: 100vw;
   margin: -8px;
 }
 
-.welcomeTag{
+.welcomeTag {
   font-size: 28px;
   font-weight: bold;
 }
 
-.username{
+.username {
   display: flex;
   align-items: flex-start;
   font-size: 22px;
@@ -141,20 +141,21 @@ a {
   margin-right: 10px;
 }
 
-.mainDiv{
+.mainDiv {
   display: flex;
-    margin-top: 150px;
-    margin-left: -350px
+  margin-top: 150px;
+  margin-left: -350px;
 }
 
-.background{
-  background: linear-gradient(to bottom left, #79C7C5 40%, #F9FBFF 100%);
+.background {
+  background: linear-gradient(to bottom left, #79c7c5 40%, #f9fbff 100%);
   height: 100vh;
   width: 100vw;
   margin: -8px;
 }
 
-input[type="email"],input[type="password"] {
+input[type="email"],
+input[type="password"] {
   height: fit-content;
   font-size: 15px !important;
   position: relative;
@@ -163,15 +164,16 @@ input[type="email"],input[type="password"] {
   padding: 0.5rem 1.1rem;
 }
 
-input[type="password"]:focus, input[type="email"]:focus{
-  outline : none;
+input[type="password"]:focus,
+input[type="email"]:focus {
+  outline: none;
 }
 
-.linkPage{
+.linkPage {
   font-size: 14px;
 }
 
-button{
+button {
   font-size: 14px;
 }
 

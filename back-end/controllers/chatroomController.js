@@ -1,27 +1,19 @@
 const mongoose = require("mongoose");
 const Chatroom = mongoose.model("Chatroom");
 const Message = mongoose.model("Message");
-
-exports.createChatroom = async (req, res) => {
+exports.createChatroom = async (req, res) => {  // create chatroom API
   const { name } = req.body;
-
   const nameRegex = /^[A-Za-z\s]+$/;
-
-  if (!nameRegex.test(name)) throw "Chatroom name can contain only alphabets.";
-
-  const chatroomExists = await Chatroom.findOne({ name });
-
+  if (!nameRegex.test(name)) throw "Chatroom name can contain only alphabets."; //chatroom name validation
+  const chatroomExists = await Chatroom.findOne({ name });    //check whether a name already exist or not
   if (chatroomExists) throw "Chatroom with that name already existss!";
-
   const chatroom = new Chatroom({
     name,
   });
-
-  await chatroom.save();
-
+  await chatroom.save();  //saving on DB
   res.json({
     message: "Chatroom created!",
-    id:chatroom._id
+    id: chatroom._id,
   });
 };
 
@@ -29,14 +21,4 @@ exports.getAllChatrooms = async (req, res) => {
   const chatrooms = await Chatroom.find({});
   res.json(chatrooms);
 };
-/* exports.getAllChats = async (req, res) => {
 
-  //console.log("kerunund", JSON.stringify(req))
-  const {chatroomId}=req.body;
-  const chatroom=chatroomId
-  console.log("iddd",JSON.stringify(req.body))
-  const messages = await Message.find({chatroom:'621c149e00e2bcb6255e0faf'}).sort({$natural:1}).limit(3);
-console.log("output",messages)
-  res.json(messages);
-  
-}; */

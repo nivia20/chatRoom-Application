@@ -1,12 +1,9 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from "axios";
-import { Link } from "react-router-dom";
 
-
-const ChatroomPage = ({ props,match, socket }) => {
-  const messageMaxNumber=3;
+const ChatroomPage = ({ props, match, socket }) => {
+  const messageMaxNumber = 8;
   const chatroomId = match.params.id;
   const [messages, setMessages] = React.useState([]);
   const messageRef = React.useRef();
@@ -20,13 +17,10 @@ const ChatroomPage = ({ props,match, socket }) => {
         chatroomId,
         message: messageRef.current.value,
       });
-      const val=isvalidURL( messageRef.current.value)
-      if(val !=null){
-        setisURL(true)
-
+      const val = isvalidURL(messageRef.current.value);
+      if (val != null) {
+        setisURL(true);
       }
-
-
       messageRef.current.value = "";
     }
   };
@@ -44,38 +38,17 @@ const ChatroomPage = ({ props,match, socket }) => {
         setTimeout(getChatrooms, 3000);
       });
   };
-  const isvalidURL = (string) => {
-  var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
- console.log("res",res)
-  return (res)
-};
- /*  const getMessages = () => {
-    axios
-      .get("http://localhost:8000/message", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("CC_Token"),
-          chatroomId
-        },
-      })
-      .then((response) => {
-        console.log("data",response.data)
-       // setMessages(response);
-      })
-      .catch((err) => {
-        setTimeout(getChatrooms, 3000);
-      });
-  }; */
+  const isvalidURL = (string) => {  //to check whether a string is URL or not
+    var res = string.match(
+      /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+    );
+    return res;
+  };
 
   React.useEffect(() => {
-    
     getChatrooms();
     // eslint-disable-next-line
   }, [props]);
-  /* React.useEffect(() => {
-    getMessages();
-    // eslint-disable-next-line
-  }, [props]); */
-
   React.useEffect(() => {
     const token = localStorage.getItem("CC_Token");
     if (token) {
@@ -85,17 +58,13 @@ const ChatroomPage = ({ props,match, socket }) => {
     if (socket) {
       socket.on("newMessage", (message) => {
         const newMessages = [...messages, message];
-        console.log("no",newMessages)
-        if(newMessages.length>messageMaxNumber){
-          newMessages.shift()
+        console.log("no", newMessages);
+        if (newMessages.length > messageMaxNumber) {  //if messages exceed a limit 
+          newMessages.shift();  //deleteing the elements from array
+          setMessages(newMessages);
+        } else {
           setMessages(newMessages);
         }
-        else{
-          setMessages(newMessages);
-        }
-        
-       
-        console.log("you",messages)
       });
     }
     //eslint-disable-next-line
@@ -120,18 +89,17 @@ const ChatroomPage = ({ props,match, socket }) => {
   }, [props]);
 
   return (
-
     <div className="chatroomPage">
       <div className="chatroomSection">
         <div className="cardHeader">
-        <div className="chatrooms">
-        {/* {chatrooms.map((chatroom) => (
+          <div className="chatrooms">
+            {/* {chatrooms.map((chatroom) => (
           <div key={chatroom._id} className="chatroom">
             <div>{chatroom.name}</div>
           </div>
         ))}           */}
-        CHATROOM NAME
-        </div>
+            CHATROOM NAME
+          </div>
         </div>
         <div className="chatroomContent">
           {messages.map((message, i) => (
@@ -143,22 +111,20 @@ const ChatroomPage = ({ props,match, socket }) => {
               >
                 {message.name}:
               </span>{" "}
-{!isURL &&
-              <div class="talk-bubble tri-right left-in">
-                <div class="talktext">
-                  <p>{message.message}</p>
+              {!isURL && (
+                <div class="talk-bubble tri-right left-in">
+                  <div class="talktext">
+                    <p>{message.message}</p>
+                  </div>
                 </div>
-              </div>
-          }
-          {
-            isURL &&
-            <div class="talk-bubble tri-right left-in">
-            <div class="talktext">
-              <a href={message.message}>{message.message}</a>
-            </div>
-          </div>
-
-          }
+              )}
+              {isURL && (
+                <div class="talk-bubble tri-right left-in">
+                  <div class="talktext">
+                    <a href={message.message}>{message.message}</a>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -167,9 +133,7 @@ const ChatroomPage = ({ props,match, socket }) => {
             <input
               type="text"
               name="message"
-              
               placeholder="Type a message..."
-              //onChange={isvalidURL()}
               ref={messageRef}
             />
           </div>
